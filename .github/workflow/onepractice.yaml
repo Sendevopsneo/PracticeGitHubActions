@@ -1,0 +1,19 @@
+name: LearnBasicWorkflow
+on:
+  - push
+jobs:
+  level1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo"Perform Basic checks"
+  level2:
+    needs: level1
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          nodeversion: "20"
+      - run npm install
+      - run npm test
